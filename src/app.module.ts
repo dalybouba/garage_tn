@@ -7,6 +7,13 @@ import { ArticleModule } from './article/article.module';
 import { LigneCommandeModule } from './ligne-commande/ligne-commande.module';
 import { LignecommandeService } from './lignecommande/lignecommande.service';
 import { LignecommandeModule } from './lignecommande/lignecommande.module';
+import { CommandeModule } from './commande/commande.module';
+import { LivraisonModule } from './livraison/livraison.module';
+import { PaiementModule } from './paiement/paiement.module';
+import { FactureModule } from './facture/facture.module';
+import { ServiceTechniqueModule } from './service-technique/service-technique.module';
+import { RendezVousModule } from './rendez-vous/rendez-vous.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -15,6 +22,13 @@ import { LignecommandeModule } from './lignecommande/lignecommande.module';
     ArticleModule,
     LigneCommandeModule,
     LignecommandeModule,
+    CommandeModule,
+    LivraisonModule,
+    PaiementModule,
+    FactureModule,
+    ServiceTechniqueModule,
+    RendezVousModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService, LignecommandeService],
