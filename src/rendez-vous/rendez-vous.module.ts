@@ -8,5 +8,6 @@ import { RendezVousController } from './rendez-vous.controller';
   imports: [MongooseModule.forFeature([{ name: 'RendezVous', schema: RendezVousSchema }])],
   controllers: [RendezVousController],
   providers: [RendezVousService],
+  exports : [RendezVousService]
 })
 export class RendezVousModule {}

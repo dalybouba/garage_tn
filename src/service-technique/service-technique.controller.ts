@@ -1,11 +1,14 @@
-import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete, UseGuards } from '@nestjs/common';
 import { ServiceTechniqueService } from './service-technique.service';
 import { ServiceTechnique } from './service-technique.model';
+import { Role, RoleGuard } from 'src/role/role.guard';
+import { UserRole } from 'src/user/user.schema';
 
 @Controller('service-technique')
 export class ServiceTechniqueController {
   constructor(private readonly serviceTechniqueService: ServiceTechniqueService) {}
-
+  @UseGuards(RoleGuard)
+  @Role(UserRole.CLIENT)
   @Post()
   async create(@Body() serviceTechnique: ServiceTechnique) {
     return this.serviceTechniqueService.create(serviceTechnique);

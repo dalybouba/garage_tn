@@ -1,11 +1,15 @@
-import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete, UseGuards } from '@nestjs/common';
 import { RendezVousService } from './rendez-vous.service';
 import { RendezVous } from './rendez-vous.model';
+import { Role, RoleGuard } from 'src/role/role.guard';
+import { UserRole } from 'src/user/user.schema';
 
 @Controller('rendez-vous')
 export class RendezVousController {
   constructor(private readonly rendezVousService: RendezVousService) {}
 
+  @UseGuards(RoleGuard)
+  @Role(UserRole.CLIENT)
   @Post()
   async create(@Body() rendezVous: RendezVous) {
     const isAvailable = await this.rendezVousService.checkAvailability(
